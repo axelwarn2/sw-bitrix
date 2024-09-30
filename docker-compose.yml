@@ -44,7 +44,7 @@ services:
         volumes_from:
             - source
         ports:
-            - '${INTERFACE}:3306:3306'
+            - '${INTERFACE}:3307:3306'
         environment:
             MYSQL_DATABASE: ${MYSQL_DATABASE}
             MYSQL_USER: ${MYSQL_USER}
