@@ -5,5 +5,6 @@ $APPLICATION->SetPageProperty("description", "Партнерам. Как ста�
 $APPLICATION->SetTitle("Как стать партнером");
 ?>
 
-<p>Текст для страницы "Как стать партнером"</p>
+Text here....
+
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -1,0 +1,1 @@
+<?php $filesInfo = ["/local/templates/exam1/js/jquery.min.js" => "172777600395957","/local/templates/exam1/js/owl.carousel.min.js" => "172777600340401","/local/templates/exam1/js/scripts.js" => "17277760033642",]; ?>

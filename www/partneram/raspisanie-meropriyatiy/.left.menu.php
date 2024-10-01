@@ -2,7 +2,7 @@
 $aMenuLinks = Array(
 	Array(
 		"Анонсы", 
-		"/partneram/raspisanie-meropriyatiy/", 
+		"/partneram/raspisanie-meropriyatiy/index.php", 
 		Array(), 
 		Array(), 
 		"" 
