@@ -1,1 +1,0 @@
-<?php $filesInfo = ["/bitrix/js/main/session.js" => "17277743042394","/bitrix/js/main/pageobject/pageobject.js" => "1727774304570","/bitrix/js/main/core/core_window.js" => "172777430476326","/bitrix/js/main/date/main.date.js" => "172777430417992","/bitrix/js/main/core/core_date.js" => "172777430426661","/bitrix/js/main/utils.js" => "172777430418721",]; ?>
