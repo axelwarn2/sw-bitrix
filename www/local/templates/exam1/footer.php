@@ -1,11 +1,30 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();?>
 
-<!-- /afisha box -->
 </div>
 </div>
 <!-- /content -->
 <!-- side -->
 <div class="side">
+    <!-- side menu -->
+    <?php if ($APPLICATION->GetCurPage() !== "/"): ?>
+    <? $APPLICATION->IncludeComponent(
+            "bitrix:menu",
+            "left",
+            array(
+                "ALLOW_MULTI_SELECT" => "N",
+                "CHILD_MENU_TYPE" => "left",
+                "DELAY" => "N",
+                "MAX_LEVEL" => "1",
+                "MENU_CACHE_GET_VARS" => array(""),
+                "MENU_CACHE_TIME" => "3600",
+                "MENU_CACHE_TYPE" => "N",
+                "MENU_CACHE_USE_GROUPS" => "Y",
+                "ROOT_MENU_TYPE" => "left",
+                "USE_EXT" => "Y"
+            )
+        ); ?>
+    <?php endif ?>
+    <!-- /side menu -->
     <!-- side anonse -->
     <div class="side-block side-anonse">
         <div class="title-block"><span class="i i-title01"></span>Полезная информация!</div>
@@ -19,9 +38,9 @@
         <div class="item-wrap">
             <!-- side action -->
             <div class="side-block side-action">
-                <img src="./img/side-action-bg.jpg" alt="" class="bg">
+                <img src="<?= SITE_TEMPLATE_PATH ?>/img/side-action-bg.jpg" alt="" class="bg">
                 <div class="photo-block">
-                    <img src="./img/side-action.jpg" alt="">
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/img/side-action.jpg" alt="">
                 </div>
                 <div class="text-block">
                     <div class="title">Акция!</div>
@@ -38,10 +57,10 @@
             <div class="rew-footer-carousel">
                 <div class="item">
                     <div class="side-block side-opin">
-                        <div class="innДемоer-block">
+                        <div class="inner-block">
                             <div class="title">
                                 <div class="photo-block">
-                                    <img src="./img/side-opin.jpg" alt="">
+                                    <img src="<?= SITE_TEMPLATE_PATH ?>/img/side-opin.jpg" alt="">
                                 </div>
                                 <div class="name-block"><a href="">Дмитрий Иванов</a></div>
                                 <div class="pos-block">Генеральный директор,"Офис+"</div>
@@ -56,7 +75,7 @@
                         <div class="inner-block">
                             <div class="title">
                                 <div class="photo-block">
-                                    <img src="./img/side-opin.jpg" alt="">
+                                    <img src="<?= SITE_TEMPLATE_PATH ?>/img/side-opin.jpg" alt="">
                                 </div>
                                 <div class="name-block"><a href="">Дмитрий Иванов</a></div>
                                 <div class="pos-block">Генеральный директор,"Офис+"</div>
@@ -69,6 +88,8 @@
             </div>
         </div>
         <!-- / footer rew slider box -->
+
+
     </div>
     <!-- /side wrap -->
 </div>
@@ -122,9 +143,7 @@
             </div>
         </nav>
         <div class="contacts-block">
-            <div class="title-block">
-                <?=GetMessage("CONTACT_INFO")?>
-            </div>
+            <div class="title-block"><?= GetMessage('CONTACT_INFO') ?></div>
             <div class="loc-block">
                 <div class="address">ул. Летняя, стр.12, офис 512</div>
                 <div class="phone"><a href="tel:84952128506">8 (495) 212-85-06</a>
@@ -132,16 +151,16 @@
             </div>
             <div class="main-soc-block">
                 <a href="" class="soc-item">
-                    <img src="./img/icons/soc01.png" alt="">
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/img/icons/soc01.png" alt="">
                 </a>
                 <a href="" class="soc-item">
-                    <img src="./img/icons/soc02.png" alt="">
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/img/icons/soc02.png" alt="">
                 </a>
                 <a href="" class="soc-item">
-                    <img src="./img/icons/soc03.png" alt="">
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/img/icons/soc03.png" alt="">
                 </a>
                 <a href="" class="soc-item">
-                    <img src="./img/icons/soc04.png" alt="">
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/img/icons/soc04.png" alt="">
                 </a>
             </div>
             <div class="copy-block">© 2000 - 2012 "Мебельный магазин"</div>
