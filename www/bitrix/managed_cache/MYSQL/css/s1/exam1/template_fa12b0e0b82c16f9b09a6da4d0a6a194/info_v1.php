@@ -1,0 +1,1 @@
+<?php $filesInfo = ["/local/templates/exam1/css/reset.css" => "17278479192466","/local/templates/exam1/css/style.css" => "172784791956735","/local/templates/exam1/css/owl.carousel.css" => "17278479194507",]; ?>
