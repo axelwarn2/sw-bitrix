@@ -132,7 +132,6 @@ IncludeModuleLangFile(__FILE__);
                             с другой.
                         </p>
 
-
                         <!-- index column -->
                         <div class="cnt-section index-column">
                             <div class="col-wrap">
