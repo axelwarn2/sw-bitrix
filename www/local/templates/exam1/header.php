@@ -101,13 +101,15 @@ IncludeModuleLangFile(__FILE__);
         <!-- /nav -->
         <!-- breadcrumbs -->
         <?php if($APPLICATION->GetCurPage() !== "/"):?>
-        <div class="breadcrumbs-box">
-            <div class="inner-wrap">
-                <a href="">Главная</a>
-                <a href="">Мебель</a>
-                <span>Выставки и события</span>
-            </div>
-        </div>
+        <?$APPLICATION->IncludeComponent(
+            "bitrix:breadcrumb",
+            "breadcams",
+            Array(
+                "PATH" => "",
+                "SITE_ID" => "s1",
+                "START_FROM" => "0"
+            )
+        );?>
         <?php endif;?>
         <!-- /breadcrumbs -->
         <!-- /breadcrumbs -->
