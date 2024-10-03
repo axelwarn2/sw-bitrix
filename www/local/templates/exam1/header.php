@@ -1,48 +1,52 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+<?php
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 use Bitrix\Main\Page\Asset;
 
 $asset = Asset::getInstance();
-$asset->addCss(SITE_TEMPLATE_PATH . '/css/reset.css');
-$asset->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
-$asset->addCss(SITE_TEMPLATE_PATH . '/css/owl.carousel.css');
 
-$asset->addJs(SITE_TEMPLATE_PATH . '/js/jquery.min.js');
-$asset->addJs(SITE_TEMPLATE_PATH . '/js/owl.carousel.min.js');
-$asset->addJs(SITE_TEMPLATE_PATH . '/js/scripts.js');
+$asset->addCss(SITE_TEMPLATE_PATH . "/css/reset.css");
+$asset->addCss(SITE_TEMPLATE_PATH . "/css/style.css");
+$asset->addCss(SITE_TEMPLATE_PATH . "/css/owl.carousel.css");
+
+$asset->addJs(SITE_TEMPLATE_PATH . "/js/jquery.min.js");
+$asset->addJs(SITE_TEMPLATE_PATH . "/js/owl.carousel.min.js");
+$asset->addJs(SITE_TEMPLATE_PATH . "/js/scripts.js");
 
 $asset->addString('<meta http-equiv="X-UA-Compatible" content="IE=edge">');
 $asset->addString('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
 
+$currentHour = date('H');
+
 IncludeModuleLangFile(__FILE__);
-$currentHour = (new DateTime('now'))->format('H');
 ?>
 
 <!DOCTYPE html>
-<html lang="<?=LANGUAGE_ID?>">
+<html lang="<?= LANGUAGE_ID ?>">
 
 <head>
-    <?=$APPLICATION->ShowHead();?>
-    <title><?=$APPLICATION->ShowTitle();?></title>
-    <link rel="icon" type="image/vnd.microsoft.icon" href="<?SITE_TEMPLATE_PATH?>/img/favicon.ico">
-    <link rel="shortcut icon" href="<?SITE_TEMPLATE_PATH?>/img/favicon.ico">
+    <title><?php $APPLICATION->ShowTitle() ?></title>
+    <link rel="icon" type="image/vnd.microsoft.icon" href="<?= SITE_TEMPLATE_PATH ?>/img/favicon.ico">
+    <link rel="shortcut icon" href="<?= SITE_TEMPLATE_PATH ?>/img/favicon.ico">
+    <?php $APPLICATION->ShowHead() ?>
 </head>
 
 <body>
-    <?=$APPLICATION->ShowPanel();?>
+    <?php $APPLICATION->ShowPanel() ?>
     <!-- wrap -->
     <div class="wrap">
         <!-- header -->
         <header class="header">
             <div class="inner-wrap">
-                <div class="logo-block"><a href="" class="logo">Мебельный магазин</a>
+                <div class="logo-block"><a href="/" class="logo">Мебельный магазин</a>
                 </div>
                 <div class="main-phone-block">
-                    <?php if($currentHour > 9 && $currentHour < 18):?>
+                    <?php if ($currentHour >= 9 && $currentHour < 18): ?>
+
                     <a href="tel:84952128506" class="phone">8 (495) 212-85-06</a>
-                    <?php else:?>
+                    <?php else: ?>
                     <a href="mailto:store@store.ru" class="phone">store@store.ru</a>
-                    <?endif;?>
+                    <?php endif ?>
                     <div class="shedule">время работы с 9-00 до 18-00</div>
                 </div>
                 <div class="actions-block">
@@ -78,81 +82,34 @@ $currentHour = (new DateTime('now'))->format('H');
         </header>
         <!-- /header -->
         <!-- nav -->
-        <nav class="nav">
-            <div class="inner-wrap">
-                <div class="menu-block popup-wrap">
-                    <a href="" class="btn-menu btn-toggle"></a>
-                    <div class="menu popup-block">
-                        <ul class="">
-                            <li class="main-page"><a href="">Главная</a>
-                            </li>
-                            <li>
-                                <a href="">Компания</a>
-                                <ul>
-                                    <li>
-                                        <a href="">Пункт 1</a>
-                                        <ul>
-                                            <li><a href="">Пункт 1</a>
-                                            </li>
-                                            <li><a href="">Пункт 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="">Пункт 2</a>
-                                    </li>
-                                    <li><a href="">Пункт 3</a>
-                                    </li>
-                                    <li><a href="">Пункт 4</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="">Новости</a>
-                            </li>
-                            <li>
-                                <a href="">Каталог</a>
-                                <ul>
-                                    <li>
-                                        <a href="">Пункт 1</a>
-                                        <ul>
-                                            <li><a href="">Пункт 1</a>
-                                            </li>
-                                            <li><a href="">Пункт 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="">Пункт 2</a>
-                                    </li>
-                                    <li><a href="">Пункт 3</a>
-                                    </li>
-                                    <li><a href="">Пункт 4</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="">Фотогалерея</a>
-                            </li>
-                            <li><a href="">Партнерам</a>
-                            </li>
-                            <li><a href="">Контакты</a>
-                            </li>
-                        </ul>
-                        <a href="" class="btn-close"></a>
-                    </div>
-                    <div class="menu-overlay"></div>
-                </div>
-            </div>
-        </nav>
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:menu",
+            "top",
+            array(
+                "ALLOW_MULTI_SELECT" => "N",
+                "CHILD_MENU_TYPE" => "left",
+                "DELAY" => "N",
+                "MAX_LEVEL" => "3",
+                "MENU_CACHE_GET_VARS" => array(""),
+                "MENU_CACHE_TIME" => "3600",
+                "MENU_CACHE_TYPE" => "N",
+                "MENU_CACHE_USE_GROUPS" => "Y",
+                "ROOT_MENU_TYPE" => "top",
+                "USE_EXT" => "Y"
+            )
+        ); ?>
         <!-- /nav -->
-
         <!-- breadcrumbs -->
+        <?php if($APPLICATION->GetCurPage() !== "/"):?>
         <div class="breadcrumbs-box">
-            <?php if($APPLICATION->GetCurPage() !== '/') :?>
             <div class="inner-wrap">
                 <a href="">Главная</a>
                 <a href="">Мебель</a>
                 <span>Выставки и события</span>
             </div>
-            <? endif;?>
         </div>
+        <?php endif;?>
+        <!-- /breadcrumbs -->
         <!-- /breadcrumbs -->
         <!-- page -->
         <div class="page">
@@ -161,19 +118,18 @@ $currentHour = (new DateTime('now'))->format('H');
                 <!-- content -->
                 <div class="content">
                     <div class="cnt">
-                        <?php if($APPLICATION->GetCurPage() !== '/'):?>
+                        <?php if ($APPLICATION->GetCurPage() !== "/"): ?>
                         <header>
-                            <h1><?=$APPLICATION->ShowTitle(false)?></h1>
+                            <h1><?php $APPLICATION->ShowTitle(false) ?></h1>
                         </header>
-                        <? endif; ?>
-
-                        <?php if($APPLICATION->GetCurPage() === '/'):?>
+                        <?php else: ?>
                         <p>«Мебельная компания» осуществляет производство мебели на высококлассном оборудовании с
                             применением минимальной доли ручного труда, что позволяет обеспечить высокое качество нашей
                             продукции. Налажен производственный процесс как массового и индивидуального характера, что с
                             одной стороны позволяет обеспечить постоянную номенклатуру изделий и индивидуальный подход –
                             с другой.
                         </p>
+
 
                         <!-- index column -->
                         <div class="cnt-section index-column">
@@ -194,7 +150,7 @@ $currentHour = (new DateTime('now'))->format('H');
                                                 <br>
                                                 <div class="inner-block">
                                                     <a href="" class="photo-block">
-                                                        <img src="./img/new01.jpg" alt="">
+                                                        <img src="<?= SITE_TEMPLATE_PATH ?>/img/new01.jpg" alt="">
                                                     </a>
                                                     <div class="text"><a href="">Угловой диван "Титаник", с большим
                                                             выбором расцветок и фактур.</a>
@@ -211,7 +167,7 @@ $currentHour = (new DateTime('now'))->format('H');
                                                 <br>
                                                 <div class="inner-block">
                                                     <a href="" class="photo-block">
-                                                        <img src="./img/new02.jpg" alt="">
+                                                        <img src="<?= SITE_TEMPLATE_PATH ?>/img/new02.jpg" alt="">
                                                     </a>
                                                     <div class="text"><a href="">Угловой диван "Титаник", с большим
                                                             выбором расцветок и фактур.</a>
@@ -228,7 +184,7 @@ $currentHour = (new DateTime('now'))->format('H');
                                                 <br>
                                                 <div class="inner-block">
                                                     <a href="" class="photo-block">
-                                                        <img src="./img/new03.jpg" alt="">
+                                                        <img src="<?= SITE_TEMPLATE_PATH ?>/img/new03.jpg" alt="">
                                                     </a>
                                                     <div class="text"><a href="">Угловой диван "Титаник", с большим
                                                             выбором расцветок и фактур.</a>
@@ -331,5 +287,4 @@ $currentHour = (new DateTime('now'))->format('H');
                             </div>
                         </div>
                         <!-- /afisha box -->
-                        <!-- /content -->
-                        <? endif; ?>
+                        <?php endif ?>
