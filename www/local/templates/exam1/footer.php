@@ -153,8 +153,23 @@
         <div class="contacts-block">
             <div class="title-block"><?= GetMessage('CONTACT_INFO') ?></div>
             <div class="loc-block">
-                <div class="address">ул. Летняя, стр.12, офис 512</div>
-                <div class="phone"><a href="tel:84952128506">8 (495) 212-85-06</a>
+                <div class="address"><?$APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    Array(
+                        "AREA_FILE_RECURSIVE" => "Y",
+                        "AREA_FILE_SHOW" => "file",
+                        "PATH" => SITE_TEMPLATE_PATH . "/includes/address.php"
+                    )
+                );?></div>
+                <div class="phone"><?$APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    Array(
+                        "AREA_FILE_SHOW" => "file",
+                        "PATH" => SITE_TEMPLATE_PATH ."/includes/tel.php"
+                    )
+                );?>
                 </div>
             </div>
             <div class="main-soc-block">
