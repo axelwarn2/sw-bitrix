@@ -3191,3 +3191,11 @@ ol {
   margin: 0;
   padding: 0;
 }
+
+.color-red{
+  color: #ff0000;
+}
+
+.color-green{
+  color: #00ff43;
+}

@@ -21,7 +21,7 @@
                     <?php if ($arItem["DEPTH_LEVEL"] === 1): ?>
                     <li>
                         <a href="<?= $arItem["LINK"] ?>" class="<?= $arItem["SELECTED"] ? 'root-item-selected' : 'root-item' ?> 
-											<?= $arItem['PARAMS']['COLOR_STYLE'] ?? '' ?>">
+							<?= $arItem['PARAMS']['COLOR_STYLE'] ?? '' ?>">
                             <?= $arItem["TEXT"] ?>
                         </a>
                         <ul>
@@ -39,7 +39,7 @@
                                     <?php if ($arItem["PERMISSION"] > "D"): ?>
                                     <?php if ($arItem["DEPTH_LEVEL"] === 1): ?>
                                     <li>
-                                        <a class="<?= $arItem['PARAMS']['COLOR_STYLE'] ?? '' ?>"
+                                        <a class = "<?=$arItem["PARAMS"]["COLOR_STYLE"]?>"
                                             href="<?= $arItem["LINK"] ?>"
                                             class="<?= $arItem["SELECTED"] ? 'root-item-selected' : 'root-item' ?>">
                                             <?= $arItem["TEXT"] ?>
