@@ -7,31 +7,38 @@
 <div class="side">
     <!-- side menu -->
     <?php if ($APPLICATION->GetCurPage() !== "/"): ?>
-    <? $APPLICATION->IncludeComponent(
-            "bitrix:menu",
-            "left",
-            array(
-                "ALLOW_MULTI_SELECT" => "N",
-                "CHILD_MENU_TYPE" => "left",
-                "DELAY" => "N",
-                "MAX_LEVEL" => "1",
-                "MENU_CACHE_GET_VARS" => array(""),
-                "MENU_CACHE_TIME" => "3600",
-                "MENU_CACHE_TYPE" => "N",
-                "MENU_CACHE_USE_GROUPS" => "Y",
-                "ROOT_MENU_TYPE" => "left",
-                "USE_EXT" => "Y"
-            )
-        ); ?>
+    <? $APPLICATION->IncludeComponent("bitrix:menu", "left", array(
+	"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "left",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "1",
+		"MENU_CACHE_GET_VARS" => array(
+			0 => "",
+		),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "N",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"ROOT_MENU_TYPE" => "left",
+		"USE_EXT" => "Y"
+	),
+	false,
+	array(
+	"ACTIVE_COMPONENT" => "N"
+	)
+); ?>
     <?php endif ?>
     <!-- /side menu -->
     <!-- side anonse -->
-    <div class="side-block side-anonse">
-        <div class="title-block"><span class="i i-title01"></span>Полезная информация!</div>
-        <div class="item">
-            <p>Клиенты предпочитают все больше эко-материалов.</p>
-        </div>
-    </div>
+    <?$APPLICATION->IncludeComponent(
+        "bitrix:main.include",
+        "",
+        Array(
+            "AREA_FILE_RECURSIVE" => "Y",
+            "AREA_FILE_SHOW" => "sect",
+            "AREA_FILE_SUFFIX" => "inc",
+            "EDIT_TEMPLATE" => "standard.php"
+        )
+    );?>
     <!-- /side anonse -->
     <!-- side wrap -->
     <div class="side-wrap">
