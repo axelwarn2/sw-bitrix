@@ -19,7 +19,8 @@ $Img = SITE_TEMPLATE_PATH.'/img/rew/no_photo.jpg';
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 	
 	if (isset($arItem["PREVIEW_PICTURE"]["SRC"])) {
-		$Img = $arItem["PREVIEW_PICTURE"]["SRC"];
+		$Img = CFile::ResizeImageGet($arItem["PREVIEW_PICTURE"], array('width' => 68, 'height' => 59), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+		$Img = $Img["src"];
 	}
 	?>
 	<div class="review-block" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
