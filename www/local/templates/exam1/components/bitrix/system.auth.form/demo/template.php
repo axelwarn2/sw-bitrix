@@ -43,7 +43,7 @@ if($arResult["FORM_TYPE"] == "login")
 					<input type="password" placeholder="<?=GetMessage("AUTH_PASSWORD")?>" name="USER_PASSWORD" maxlength="50" size="17" autocomplete="off" />			
 				</div>
 				<div class="frm-row">
-					<a href="" class="btn-forgot"><?=GetMessage("AUTH_FORGOT_PASSWORD_2")?></a>
+					<a href="/login/?forgot_password=yes" class="btn-forgot"><?=GetMessage("AUTH_FORGOT_PASSWORD_2")?></a>
 				</div>
 				<div class="frm-row">
 					<div class="frm-chk">
@@ -53,10 +53,43 @@ if($arResult["FORM_TYPE"] == "login")
 				<div class="frm-row">
 					<input type="submit" name="Login" value="<?=GetMessage("AUTH_LOGIN_BUTTON")?>">
 				</div>
+
+				<?if($arResult["AUTH_SERVICES"]):?>
+				<?
+				$APPLICATION->IncludeComponent("bitrix:socserv.auth.form", "",
+					array(
+						"AUTH_SERVICES"=>$arResult["AUTH_SERVICES"],
+						"SUFFIX"=>"form",
+						"AUTH_URL"=>$arResult["AUTH_URL"],
+						"POST"=>$arResult["POST"],
+					),
+					$component,
+					array("HIDE_ICONS"=>"Y")
+				);
+				?>
+				<?endif?>
 			</form></li>
-		<li><a href=""><?=GetMessage("AUTH_REGISTER")?></a></li>
+		<li><a href="/login/?register=yes"><?=GetMessage("AUTH_REGISTER")?></a></li>
 	</ul>
 </nav>
 <?
+}
+else
+{
+	?>
+	<?php 
+	$rsUser = CUser::GetById($USER->GetID());
+	$arUser = $rsUser->Fetch();
+	?>
+	<nav class="menu-block">
+        <ul>
+        	<li>
+                <a href="/login/user.php" ><?=$arUser["NAME"];?> <?=$arUser["LAST_NAME"];?> [<?= $arUser["LOGIN"];?>]</a>
+            </li>
+            <li><a href="?logout=yes&sessid=<?=$_SESSION["fixed_session_id"]?>">Выйти</a>
+            </li>
+        </ul>
+    </nav>
+	<?
 }
 ?>
